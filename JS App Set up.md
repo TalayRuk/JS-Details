@@ -317,6 +317,7 @@ Now we can run **gulp serv** from the top level of our project directory to laun
 
 ### Add .gitignore file to the folder
 ```
-node_modules/
+node_modules
+bower_components
 .DS_Store
 ```
