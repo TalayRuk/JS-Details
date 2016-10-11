@@ -165,12 +165,6 @@ gulp.task('jshint', function() {
 
 ```
 
-### Add .gitignore file to the folder
-```
-node_modules/
-.DS_Store
-```
-
 ### Add Bower
 ```
 $ npm install bower -g installing it globally
@@ -289,5 +283,10 @@ gulp.task('htmlBuild', function() {
 
 ```
 
-
 Now we can run **gulp serv** from the top level of our project directory to launch our server and run the app.
+
+### Add .gitignore file to the folder
+```
+node_modules/
+.DS_Store
+```
