@@ -315,6 +315,8 @@ gulp.task('htmlBuild', function() {
 
 Now we can run **gulp serv** from the top level of our project directory to launch our server and run the app.
 
+### USE $ gulp jshint to find error like ; ..
+
 ### Add .gitignore file to the folder
 ```
 after add bower gulpfile pkg
