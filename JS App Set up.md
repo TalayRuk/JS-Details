@@ -4,10 +4,12 @@
 ### Starting Project
 1. Make the Project folder
 2. Make js folder 
-  - make gulpfile.js inside js folder
   - make method.js file
   - make method-interface.js file
-4. make index.html
+3. Make CSS folder
+  - make styles.css 
+4. Make gulpfile.js 
+5. Make index.html
 
 
 
