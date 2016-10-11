@@ -99,6 +99,33 @@ $ gulp build (for developer to use - make code readable)
 run
 $ gulp name(whatever the name is )
 ```
+
+## This is What package.json should look like when finished above:
+```
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vichitra pool",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.3",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
+```
+
 ### to check for error .. run $ gulp jshint 
 ### Create gulpfile.js
 
