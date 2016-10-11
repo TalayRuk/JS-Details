@@ -8,11 +8,11 @@ The main benefits of using Bower/a different package manager for the front-end a
 2. **Optimization:**
     - Some packages depend on specific versions of other packages. Sometimes two packages require different versions of the same dependency. npm installs each package's dependencies separately. If each of our backend modules has its own version of a package, they are independent and there is no conflict. Each package can have its own node_modulesfolder, and this is convenient but it can lead to complex paths and lots of files. Bower makes sure that each package is installed only once, even if it is used by multiple packages. This makes sense since we can't use jQuery-1.12.0 at the same time as jQuery-2.2.0 in the browser.
 
-#### Installing:
+#### Bower Installing:
 ```
 **$ npm install bower -g** installing it globally
 ```
-#### Initializing:
+#### Bower Initializing:
 ```
 **$ bower init**
 ```
@@ -37,17 +37,24 @@ Now, we should have a bower.json file that looks like this:
   ]
 }
 ```
+
 #### Installing Front-End Dependencies via Bower jQuery
 - We can install jQuery with this simple command. We are using the --save flag instead of our usual --save-dev flag because we do want to use jQuery in the final production build.
 ```
 $ bower install jquery --save
 ```
-##### When we clone a project that uses npm to manage its dependencies, we run npm install to put the packages on our local machine. We do the same thing **to get our Bower dependencies:**
+
+#### Install Bower dependencies:
 ```
 $ bower install
 ```
+
 #### Add bower_components folder to .gitignor file.
-Now we can see that Bower has created a directory to hold our dependencies called **bower_components.** We should add this folder to our**.gitignore file,** just as we did with our node_modules folder holding npm dependencies. *We can load jQuery into our html app from this folder by simply changing the path in our <script> tag*, instead of using the old tag.
+Now we can see that Bower has created a directory to hold our dependencies called **bower_components.** We should add this folder to our **.gitignore file,** just as we did with our node_modules folder holding npm dependencies. 
+
+#### Add jQuery into our html app 
+- from *this folder by simply changing the path in our script tag*, instead of using the old tag:
+
 ```
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 ```
