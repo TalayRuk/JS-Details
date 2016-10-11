@@ -59,6 +59,7 @@ $ npm install gulp --save-dev
   } 
 
 $ npm install browserify --save-dev
+-(this will auto install node_modules folder)
 
 $ npm install gulp --save-dev
 
@@ -79,10 +80,11 @@ $ npm install gulp-util --save-dev
 - for gulp-util then add var utilities to gulpfile.js
 
 everytime the project files is modified need to run: (just works similar to dnx kestrel
-$ gulp build --production   :(for user interface or when launch)
+$ gulp build --production   :(for user interface or when launch, this also put codes in app.js in bulid
+  folder to be all in one line --> "ugly" code.)
 or 
-$ gulp build (for developer to use) 
-
+$ gulp build (for developer to use - make code readable) 
+(**this is when the build file is auto made and tmp file also)
 $ npm install del --save-dev
 -hen add var delete to gulp file
 
@@ -243,7 +245,7 @@ gulp.task('bowerCSS', function () {
 gulp.task('bower', ['bowerJS', 'bowerCSS']);
 
 ***Then add only
- gulp.start('bower'); below gulp.start('jsBrowserify');
+ gulp.start('bower'); below {gulp.start('jsBrowserify'); }
  to look like this:
  gulp.task('build', ['clean'], function(){
   if (buildProduction) {
