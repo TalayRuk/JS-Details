@@ -25,7 +25,9 @@ Calculator.prototype.pingPong = function(methodParameter) {
 
 exports.calculatorModule = Calculator;
 
-Then add this to js/pingpong-interface.js
+Then add this to js/project-interface.js
+(Add API:)
+var apiKey = "YOUR-API-KEY-GOES-HERE";
 var Calculator = require('./../js/pingpong.js').calculatorModule;
 
 $(document).ready ...
