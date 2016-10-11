@@ -1,6 +1,15 @@
 ## Node Package Manager (npm)
 
-### roject folder
+### Project folder
+### Starting Project
+1. Make the Project folder
+2. Make js folder 
+  - make gulpfile.js inside js folder
+  - make method.js file
+  - make method-interface.js file
+4. make index.html
+
+
 
 ###  build .js file add
 ```
