@@ -21,7 +21,8 @@
 then run:
 - gulp build 
 - if there's error 
--run gulp jshint
+- run gulp jshint
+- make new .env
 
 ```
 
