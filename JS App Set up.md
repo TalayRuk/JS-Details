@@ -10,6 +10,7 @@
 3. Make SCSS folder
   - make styles.scss 
 4. Make gulpfile.js 
+5. Make .gitignore
 5. Make index.html
 
 # When Clone the project from github on a diff computer, May need to run :
