@@ -228,6 +228,9 @@ $ bower install bootstrap --save
 $ bower install moment --save
 
 $ npm install bower-files --save-dev
+
+$ npm install browser-sync --save-dev
+
 ```
 
 #### Using links & Scripts below for HTML file 
@@ -253,6 +256,7 @@ var lib = require('bower-files')({
     }
   }
 });
+var browserSync = require('browser-sync').create();
 
 gulp.task('bowerJS', function () {
   return gulp.src(lib.ext('js').files)
@@ -284,7 +288,6 @@ gulp.task('bower', ['bowerJS', 'bowerCSS']);
 ```
 ### Install BrowserSync
 ```
-$ npm install browser-sync --save-dev
 
 then in gulpfile.js
 
@@ -295,6 +298,7 @@ gulp.task('serve', function() {
       index: "index.html"
     }
   });
+
   gulp.watch(['js/*.js'], ['jsBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
   gulp.watch(['*.html'], ['htmlBuild']);
@@ -311,6 +315,7 @@ gulp.task('bowerBuild', ['bower'], function(){
 gulp.task('htmlBuild', function() {
   browserSync.reload();
 });
+
 
 ```
 
