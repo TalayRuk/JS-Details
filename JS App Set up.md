@@ -1,3 +1,4 @@
+## Keep in mind *Asynchronicity* refers to the way that JavaScript code can be executed out of order.
 ## Node Package Manager (npm)
 
 ### Project folder
@@ -323,13 +324,17 @@ Now we can run **gulp serv** from the top level of our project directory to laun
 
 ### USE $ gulp jshint to find error like ; ..
 
-### Add .gitignore file to the folder
+### Add .gitignore file 
 ```
-after add bower gulpfile pkg
-node_modules
-bower_components
-build and tmp folders
+(after add bower gulpfile pkg)
+
+node_modules/
 .DS_Store
+bower_components/
+build/
+tmp/ 
+.env     
+      (file that can only be access locally)
 ```
 
 ### gulp serve : to run the server 
@@ -339,3 +344,11 @@ ctrl c to close the server *Every time we run the html, we want to run the serve
  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response)
  FROM example: http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98
  e'll need to sign up for a free account at the Open Weather Map website to get the API key
+#### Create an API keys folder 
+```
+.env
+------------
+exports.apiKey = "44db6a862fba0b067b1930da0d769e98";
+```
+then add var apiKey = require('./../.env').apiKey; in interface.js
+ **Need to include instruction for key in a local file w/filename & location in README**
