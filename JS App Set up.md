@@ -340,6 +340,8 @@ tmp/
 ### gulp serve : to run the server 
 ctrl c to close the server *Every time we run the html, we want to run the server*
 
+### When edit the file like js file need to run gulp build then gulp serve to open edited function html
+
 ## how to use API KEY
  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response)
  FROM example: http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98
