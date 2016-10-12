@@ -331,3 +331,6 @@ bower_components
 build and tmp folders
 .DS_Store
 ```
+
+### gulp serve : to run the server 
+ctrl c to close the server *Every time we run the html, we want to run the server*
