@@ -13,6 +13,7 @@
 5. Make .gitignore
 6. Make index.html
 7. Add links for index.html
+8. Make .env file
 ```
     <link rel="stylesheet" href="build/css/vendor.css">
     <link rel="stylesheet" href="build/css/styles.css">
