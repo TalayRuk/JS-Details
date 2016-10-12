@@ -11,7 +11,14 @@
   - make styles.scss 
 4. Make gulpfile.js 
 5. Make .gitignore
-5. Make index.html
+6. Make index.html
+7. Add links for index.html
+```
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <link rel="stylesheet" href="build/css/styles.css">
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
+```    
 
 # When Clone the project from github on a diff computer, May need to run :
 ```
