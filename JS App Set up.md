@@ -12,7 +12,6 @@
 5. Make index.html
 
 
-
 ###  build .js file add
 ```
 function Calculator(constructorParameter) {
@@ -32,6 +31,8 @@ var Calculator = require('./../js/pingpong.js').calculatorModule;
 
 $(document).ready ...
 ```
+**Once make all these folder need to git init and git add . & commit & push to github**
+
 ### initailizing npm 
 ```
 $ npm init
