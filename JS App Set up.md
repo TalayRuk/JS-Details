@@ -419,7 +419,10 @@ gulp.watch(["scss/*.scss"], ['cssBuild']);
 gulp.start('cssBuild'); 
 
 ```
-#### The last two methods save our compiled CSS with its source maps in a destination folder called css. a CSS file at the path *css/styles.css.*
+#### The last two methods save our compiled SCSS with its source maps in a destination folder called scss. 
+- **cssBuild create a CSS file at the path *css/styles.css* for the html and return using scss folder in the project. 
+
+## with this you can call out color name with hex color once at the top of the styles.scss page and then can change the hex color just at that top section when you want to change the color. While color name in various area still stay the same. 
 
 ## Run gulp cssBuild and then gulp serve, we will see our new styles on our weather page.
 - or Run Serve only once gulp cssBuild is already run.
