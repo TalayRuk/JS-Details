@@ -7,8 +7,8 @@
 2. Make js folder 
   - make method.js file
   - make method-interface.js file
-3. Make CSS folder
-  - make styles.css 
+3. Make SCSS folder
+  - make styles.scss 
 4. Make gulpfile.js 
 5. Make index.html
 
