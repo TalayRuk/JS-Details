@@ -288,8 +288,8 @@ gulp.task('bower', ['bowerJS', 'bowerCSS']);
 
 ***Then add only
  gulp.start('bower'); below {gulp.start('jsBrowserify'); }
- to look like this:
- gulp.task('build', ['clean'], function(){
+ to look like this: *in BOTH build, function() and build, ['clean']
+  ......
   if (buildProduction) {
     gulp.start('minifyScripts');
   } else {
