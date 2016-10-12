@@ -12,6 +12,18 @@
 4. Make gulpfile.js 
 5. Make index.html
 
+# When Clone the project from github on a diff computer, May need to run :
+```
+- npm install
+- bower install
+- maybe -npm install browser-sync --save-dev? ... but 
+- maybe npm install gulp-sass gulp-sourcemaps --save-dev?
+then run:
+- gulp build 
+- if there's error 
+-run gulp jshint
+
+```
 
 ###  build .js file add
 ```
@@ -230,7 +242,6 @@ $ bower install moment --save
 
 $ npm install bower-files --save-dev
 
-$ npm install browser-sync --save-dev
 
 ```
 
@@ -289,6 +300,7 @@ gulp.task('bower', ['bowerJS', 'bowerCSS']);
 ```
 ### Install BrowserSync
 ```
+npm install browser-sync --save-dev
 
 then in gulpfile.js
 
@@ -317,10 +329,9 @@ gulp.task('htmlBuild', function() {
   browserSync.reload();
 });
 
-
 ```
 
-Now we can run **gulp serv** from the top level of our project directory to launch our server and run the app.
+Now we can run **gulp serve** from the top level of our project directory to launch our server and run the app.
 
 ### USE $ gulp jshint to find error like ; ..
 
@@ -355,6 +366,33 @@ exports.apiKey = "44db6a862fba0b067b1930da0d769e98";
 then add var apiKey = require('./../.env').apiKey; in interface.js
  **Need to include instruction for key in a local file w/filename & location in README**
 
+### Installing Sass **for the 1st time
+First, you must have Ruby installed. For Windows users, there is a handy Ruby installer which also gives you some command line tools. Mac users can install Ruby using homebrew.
+
+First install homebrew:
+```
+Do this in admin
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+Then, install Ruby.
+
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+Finally, both Mac and Windows users can install Sass from the command line using:
+
+do this in desktop
+
+$ gem install sass
+
+if gem install sass ... has error about certificate 
+fix it by:
+Replace the ssl gem source with non-ssl as a temp solution:
+
+gem sources -r https://rubygems.org/  -remove
+gem sources -a http://rubygems.org/  - add back in 
+
+then 
+gem update 
+
+```
 ### USING SASS
 ```
 npm install gulp-sass gulp-sourcemaps --save-dev
@@ -372,7 +410,12 @@ gulp.task('cssBuild', function() {
     .pipe(browserSync.stream());
 });
 
+** add a watcher for our SCSS files to our serve task, so that they are built automatically whenever they are changed.
+
 gulp.watch(["scss/*.scss"], ['cssBuild']);
+
+*** add to gulp.task("build". function() -below gulp.start('bower'); ***
+gulp.start('cssBuild'); 
 
 ```
 #### The last two methods save our compiled CSS with its source maps in a destination folder called css. a CSS file at the path *css/styles.css.*
@@ -383,7 +426,7 @@ gulp.watch(["scss/*.scss"], ['cssBuild']);
 
 ## Once project is finished also add:
 ```
-gulp.start('cssBuild') under gulp.start('bower'); ***
 
 run: gulp build or gulp build --production (so it'll compress the code's files)
 ```
+## See complete files & folders in Weather repo
