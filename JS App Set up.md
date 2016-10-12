@@ -35,6 +35,19 @@ then run:
 
 ```
 
+### Add .gitignore file 
+```
+(after add bower gulpfile pkg)
+
+node_modules/
+.DS_Store
+bower_components/
+build/
+tmp/ 
+.env     
+      (file that can only be access locally)
+```
+
 ###  build .js file add
 ```
 function Calculator(constructorParameter) {
@@ -53,10 +66,185 @@ var apiKey = "YOUR-API-KEY-GOES-HERE";
 var Calculator = require('./../js/pingpong.js').calculatorModule;
 
 $(document).ready ...
+
 ```
+
 **Once make all these folder need to git init and git add . & commit & push to github**
 
-### initailizing npm 
+
+# This is the finished gulpfile.js from all the installs
+```
+var gulp = require('gulp');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var utilities = require('gulp-util');
+var buildProduction = utilities.env.production;
+var del = require('del');
+var jshint = require('gulp-jshint');
+var lib = require('bower-files')({
+  "overrides":{
+    "bootstrap" : {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+});
+var browserSync = require('browser-sync').create();
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+
+
+gulp.task('concatInterface', function() {
+  return gulp.src(['./js/*-interface.js'])
+    .pipe(concat('allConcat.js'))
+    .pipe(gulp.dest('./tmp'));
+});
+
+gulp.task('jsBrowserify', ['concatInterface'], function() {
+  return browserify({ entries: ['./tmp/allConcat.js'] })
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(gulp.dest('./build/js'));
+});
+
+// (after run uglify)
+
+gulp.task("minifyScripts", ["jsBrowserify"], function(){
+  return gulp.src("./build/js/app.js")
+    .pipe(uglify())
+    .pipe(gulp.dest("./build/js"));
+});
+
+gulp.task("build", ['clean'], function(){
+  if (buildProduction) {
+    gulp.start('minifyScripts');
+  } else {
+    gulp.start('jsBrowserify');
+  }
+  gulp.start('bower');
+});
+
+gulp.task("clean", function(){
+  return del(['build', 'tmp']);
+});
+
+gulp.task("build", function(){
+  if (buildProduction) {
+    gulp.start('minifyScripts');
+  } else {
+    gulp.start('jsBrowserify');
+  }
+  gulp.start('bower');
+  gulp.start('cssBuild');
+});
+
+gulp.task('jshint', function() {
+  return gulp.src(['js/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('bowerJS', function () {
+  return gulp.src(lib.ext('js').files)
+    .pipe(concat('vendor.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./build/js'));
+});
+
+gulp.task('bowerCSS', function () {
+  return gulp.src(lib.ext('css').files)
+    .pipe(concat('vendor.css'))
+    .pipe(gulp.dest('./build/css'));
+});
+
+gulp.task('bower', ['bowerJS', 'bowerCSS']);
+
+gulp.task('serve', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./",
+      index: "index.html"
+    }
+  });
+
+  gulp.watch(['js/*.js'], ['jsBuild']);
+  gulp.watch(['bower.json'], ['bowerBuild']);
+  gulp.watch(['*.html'], ['htmlBuild']);
+  gulp.watch(["scss/*.scss"], ['cssBuild']);
+});
+
+gulp.task('jsBuild', ['jsBrowserify', 'jshint'], function(){
+  browserSync.reload();
+});
+
+gulp.task('bowerBuild', ['bower'], function(){
+  browserSync.reload();
+});
+
+gulp.task('htmlBuild', function() {
+  browserSync.reload();
+});
+
+gulp.task('cssBuild', function() {
+  return gulp.src(['scss/*.scss'])
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/css'))
+    .pipe(browserSync.stream());
+});
+
+```
+
+# This is all install need to be done after copy the gulpfile.js
+```
+npm init
+npm install gulp --save-dev
+npm install browserify --save-dev
+npm install gulp --save-dev
+npm install vinyl-source-stream --save-dev
+npm install gulp-concat --save-dev 
+gulp jsBrowserify
+npm install gulp-uglify --save-dev
+npm install gulp-util --save-dev 
+npm install del --save-dev
+npm install jshint --save-dev
+npm install gulp-jshint --save-dev
+gulp build 
+
+-install Bower
+
+npm install bower -g
+bower init
+bower install jquery --save
+bower install
+bower install bootstrap --save
+bower install moment --save
+npm install bower-files --save-dev
+
+-install BrowserSync
+
+npm install browser-sync --save-dev
+
+-install SASS .. once ruby & gem is install
+
+npm install gulp-sass gulp-sourcemaps --save-dev
+
+Run:      gulp cssBuild
+          gulp build
+and then: gulp serve
+
+To see any error Run: gulp jshint 
+When finish Run: gulp build production  
+
+```
+
+### initailizing npm in detail
 ```
 $ npm init
 
@@ -345,18 +533,7 @@ Now we can run **gulp serve** from the top level of our project directory to lau
 
 ### USE $ gulp jshint to find error like ; ..
 
-### Add .gitignore file 
-```
-(after add bower gulpfile pkg)
 
-node_modules/
-.DS_Store
-bower_components/
-build/
-tmp/ 
-.env     
-      (file that can only be access locally)
-```
 
 ### gulp serve : to run the server 
 ctrl c to close the server *Every time we run the html, we want to run the server*
