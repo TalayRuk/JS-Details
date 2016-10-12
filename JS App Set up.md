@@ -334,3 +334,8 @@ build and tmp folders
 
 ### gulp serve : to run the server 
 ctrl c to close the server *Every time we run the html, we want to run the server*
+
+## how to use API KEY
+ $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response)
+ FROM example: http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98
+ e'll need to sign up for a free account at the Open Weather Map website to get the API key
