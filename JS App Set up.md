@@ -354,3 +354,36 @@ exports.apiKey = "44db6a862fba0b067b1930da0d769e98";
 ```
 then add var apiKey = require('./../.env').apiKey; in interface.js
  **Need to include instruction for key in a local file w/filename & location in README**
+
+### USING SASS
+```
+npm install gulp-sass gulp-sourcemaps --save-dev
+
+In gulpfile.js:
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+
+gulp.task('cssBuild', function() {
+  return gulp.src(['scss/*.scss'])
+    .pipe(sourcemaps.init()) 
+    .pipe(sass())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build/css'));
+    .pipe(browserSync.stream());
+});
+
+gulp.watch(["scss/*.scss"], ['cssBuild']);
+
+```
+#### The last two methods save our compiled CSS with its source maps in a destination folder called css. a CSS file at the path *css/styles.css.*
+
+## Run gulp cssBuild and then gulp serve, we will see our new styles on our weather page.
+- or Run Serve only once gulp cssBuild is already run.
+- with gulp.watch  ... once the gulp cssBuild & serve run once .. If there's only changes in styles.css we don't have to run gulp serve again. The browser will change w/o requiring us to reload
+
+## Once project is finished also add:
+```
+gulp.start('cssBuild') under gulp.start('bower'); ***
+
+run: gulp build or gulp build --production (so it'll compress the code's files)
+```
