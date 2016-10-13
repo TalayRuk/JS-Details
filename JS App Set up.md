@@ -66,7 +66,7 @@ exports.calculatorModule = Calculator;
 
 Then add this to js/project-interface.js
 
-var myMap = require('./../js/myMap.js').myMapModule;
+var Calculator = require('./../js/myMap.js').calculatorModule;
 
 $(document).ready ...
 
