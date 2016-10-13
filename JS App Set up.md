@@ -50,6 +50,9 @@ tmp/
 
 ###  build .js file add
 ```
+(Add API:)
+var apiKey = require('./../.env').apiKey;
+
 function Calculator(constructorParameter) {
   // constructor
 }
@@ -60,10 +63,10 @@ Calculator.prototype.pingPong = function(methodParameter) {
 
 exports.calculatorModule = Calculator;
 
+
 Then add this to js/project-interface.js
-(Add API:)
-var apiKey = "YOUR-API-KEY-GOES-HERE";
-var Calculator = require('./../js/pingpong.js').calculatorModule;
+
+var myMap = require('./../js/myMap.js').myMapModule;
 
 $(document).ready ...
 
