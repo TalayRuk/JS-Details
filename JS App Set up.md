@@ -9,7 +9,7 @@
   - make method-interface.js file
 3. Make SCSS folder
   - make styles.scss 
-  to add color at the top $grey = #hex color;
+  - to add color at the top $grey: #hex color;
 4. Make gulpfile.js 
 5. Make .gitignore
 6. Make index.html
