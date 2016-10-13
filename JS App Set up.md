@@ -244,6 +244,29 @@ When finish Run: gulp build production
 
 ```
 
+### USE $ gulp jshint to find error like ; ..
+
+### gulp serve : to run the server 
+ctrl c to close the server *Every time we run the html, we want to run the server*
+
+### When edit the file like js file need to run gulp build then gulp serve to open edited function html
+
+## how to use API KEY
+ $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response)
+ FROM example: http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98
+ e'll need to sign up for a free account at the Open Weather Map website to get the API key
+#### Create an API keys folder 
+```
+.env
+------------
+exports.apiKey = "92989787b162da83230574f8e3e4b79b";
+```
+then add var apiKey = require('./../.env').apiKey; in interface.js
+ **Need to include instruction for key in a local file w/filename & location in README**
+
+
+
+
 ### initailizing npm in detail
 ```
 $ npm init
@@ -443,13 +466,7 @@ $ npm install bower-files --save-dev
 
 ```
 
-#### Using links & Scripts below for HTML file 
-```
-    <link rel="stylesheet" href="build/css/vendor.css">
-    <script src="build/js/vendor.min.js"></script>
-    <script type="text/javascript" src="build/js/app.js"></script>
-  ***if we using our own css file the link for example <link rel="stylesheet"href="/css/script.css"> also need to be added***
-```
+
 
 #### Using Bower Pkges in the Gulpfile
 
@@ -531,27 +548,6 @@ gulp.task('htmlBuild', function() {
 
 Now we can run **gulp serve** from the top level of our project directory to launch our server and run the app.
 
-### USE $ gulp jshint to find error like ; ..
-
-
-
-### gulp serve : to run the server 
-ctrl c to close the server *Every time we run the html, we want to run the server*
-
-### When edit the file like js file need to run gulp build then gulp serve to open edited function html
-
-## how to use API KEY
- $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey, function(response)
- FROM example: http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=44db6a862fba0b067b1930da0d769e98
- e'll need to sign up for a free account at the Open Weather Map website to get the API key
-#### Create an API keys folder 
-```
-.env
-------------
-exports.apiKey = "92989787b162da83230574f8e3e4b79b";
-```
-then add var apiKey = require('./../.env').apiKey; in interface.js
- **Need to include instruction for key in a local file w/filename & location in README**
 
 ### Installing Sass **for the 1st time
 First, you must have Ruby installed. For Windows users, there is a handy Ruby installer which also gives you some command line tools. Mac users can install Ruby using homebrew.
