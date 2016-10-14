@@ -264,7 +264,7 @@ ctrl c to close the server *Every time we run the html, we want to run the serve
 ```
 .env
 ------------
-exports.apiKey = "92989787b162da83230574f8e3e4b79b";
+exports.apiKey = "your-Api-Goes-Here";
 ```
 then add var apiKey = require('./../.env').apiKey; in interface.js
  **Need to include instruction for key in a local file w/filename & location in README**
