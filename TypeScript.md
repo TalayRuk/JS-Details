@@ -99,6 +99,7 @@ Finally, we declare a greet method, which may be called on any Greeter object. I
 
 Let's try it out! We'll add some code to our app/greetings.ts file to make some new instances of Greeter objects.
 
+```
 app/greetings.ts
 ------------------------------
 var greeters: Greeter[] = [];
